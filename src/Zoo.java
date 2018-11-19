@@ -9,15 +9,15 @@ public class Zoo {
 	//3. Write code in main to demonstrate the class can create instances of the class and
 	//edit the appropriate member variables.
 	
-	private int birthYear;
+	public int year;
 	private int legs;
-	private String species;
-	private boolean furry;
+	public String species;
+	private String furry;
 	private int weight;
-	private String meansOfAttack;
+	public String meansOfAttack;
 	
-	public Zoo (int y, int l, String s, boolean f, int weight, String mOA) {
-		birthYear = y; 
+	public Zoo (int y, int l, String s, String f, int weight, String mOA) {
+		year = y; 
 		setLegs(l);
 		species = s;
 		setFurry(f); 
@@ -34,12 +34,16 @@ public class Zoo {
 			System.out.println("legs can not be negative, defaulting to 4");
 		}
 }
-	public void setFurry(boolean f) {
-		if (f == true) {
-			String furryOrNot = "yes";
+	public void setFurry(String f) {
+		if (f.equals ("yes")) {
+			furry = f;
+		}
+		else if (f.equals("no")) {
+			furry =f;
 		}
 		else {
-			String furryOrNot = "no";
+			furry = "yes";
+			System.out.println("furry can only be 'yes' or 'no'. Defaulting to yes"); 
 }
 }
 	
@@ -52,9 +56,26 @@ public class Zoo {
 			System.out.println("Weight cannot be negative, defaulting to 100");
 		}
 	}
+	public int getYear() {
+		return year; 
+	}
+	public int getLegs() {
+		return legs;
+	}
+	public String getFurry() {
+		return furry;
+	}
+	public int getWeight() {
+		return weight; 
+	}
+		
 	public String toString() {
-		return "this animal is a " + species + ", born in " + birthYear + " with " + legs + " legs. It weighs: " + weight +
-				" pounds. It's main mean of attack is " + meansOfAttack; 
+		if (furry.equals("yes")) {
+			return "this animal is a " + species + ", born in " + year + " with " + legs + " legs. It weighs: " + weight +
+		" pounds. It's main mean of attack is " + meansOfAttack  + ". And it is furry"; }
+			else {
+				return "this animal is a " + species + ", born in " + year + " with " + legs + " legs. It weighs: " + weight +
+				" pounds. It's main mean of attack is " + meansOfAttack + ". And it is not furry"; }
 }
 
 	}
